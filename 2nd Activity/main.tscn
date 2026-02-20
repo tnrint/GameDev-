@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://75uwa0l6vseu"]
+
+[ext_resource type="Script" uid="uid://du007wfqr5mk6" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cp1du63ffq6wd" path="res://mob.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dcvtc44ctqtog" path="res://player.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://d1b4ip5xyl6fv" path="res://hud.tscn" id="4_1bvp3"]
+
+[sub_resource type="Curve2D" id="Curve2D_1bvp3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 648, 0, 0, 0, 0, -0.40549827, 1.9877676, 0, 0, 0, 0, 465.9175, 1.9877676, 0, 0, 0, 0, 466.72852, 646.0245, 0, 0, 0, 0, 0, 648)
+}
+point_count = 5
+
+[node name="Main" type="Node"]
+script = ExtResource("1_0xm2m")
+mob_scene = ExtResource("2_1bvp3")
+
+[node name="Player" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(240, 449)
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(240, 450)
+
+[node name="MobPath" type="Path2D" parent="."]
+position = Vector2(-0.5807291, -4.2308116)
+scale = Vector2(1.0339645, 1.1222697)
+curve = SubResource("Curve2D_1bvp3")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2(0, 648)
+rotation = -1.571424
+
+[node name="HUD" parent="." instance=ExtResource("4_1bvp3")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 483.0
+offset_bottom = 732.0
+color = Color(0, 0, 0.08627451, 1)
+
+[connection signal="hit" from="Player" to="." method="game_over"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]
