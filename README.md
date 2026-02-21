@@ -18,7 +18,7 @@ A simple dodging "charles" game you earn points every seconds you survive the fl
 2nd Week 2nd Activity
 A simple slide run dino game inspired by google dino game level 1 is up to 1000 score once that score is reached it will enter level 2 which is more difficult and faster and birds will now spawn in the air very difficult to win
 
-<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/9e53359f-3955-4d4b-a523-acdca564c457" />
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/6cdb3e05-35ee-45e7-8a46-ee3204b39306" />
 
-<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/d3f12bcb-48c2-45fc-816d-be7e9e164e66" />
+<img width="300" height="300" alt="image" src="https://github.com/user-attachments/assets/10fd19c1-a595-436e-99cc-b80909c595a9" />
 
