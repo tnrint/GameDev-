@@ -1,4 +1,3 @@
-# GameDev-
 ## Game Development subject IT 3
 
 # 1st Week 1st Activity
