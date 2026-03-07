@@ -1,6 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfh4c4mwbm0jj"]
+[gd_scene load_steps=11 format=3 uid="uid://bfh4c4mwbm0jj"]
 
 [ext_resource type="Texture2D" uid="uid://xnavsn7vlavt" path="res://oak_woods_v1.0/oak_woods_tileset.png" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://dc1gp4c5lkwic" path="res://bat.tscn" id="2_fr6qw"]
+[ext_resource type="PackedScene" uid="uid://b4nekjir0edk0" path="res://Player.tscn" id="3_oiqhk"]
+[ext_resource type="PackedScene" uid="uid://c04vnckttsxkw" path="res://frog.tscn" id="4_oiqhk"]
 
 [sub_resource type="GDScript" id="GDScript_jl26d"]
 
@@ -66,30 +69,35 @@ layer_0/tile_data = PackedInt32Array(1179711, 65537, 1, 1245247, 65537, 1, 13107
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(16, 448)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(264, 152)
-zoom = Vector2(2, 2)
+[node name="Bat" parent="." instance=ExtResource("2_fr6qw")]
+position = Vector2(408, 136)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(0, -288)
 polygon = PackedVector2Array(-16, 464, -16, 576, 528, 576, 528, 440, 344, 440, 344, 464)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(624, 120)
 shape = SubResource("RectangleShape2D_5s8la")
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(776, 48, 776, 72, 752, 72, 752, 96, 768, 96, 768, 120, 888, 120, 888, 96, 912, 96, 912, 72, 888, 72, 888, 48, 840, 48, 840, 24, 824, 24, 824, 48, 816, 48)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1044, 217.75)
 shape = SubResource("RectangleShape2D_fr6qw")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1276, 170.875)
 shape = SubResource("RectangleShape2D_oiqhk")
 
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(1624, 144, 1624, 488, 2072, 488, 2072, 144, 2184, 144, 2184, 624, 1512, 624, 1512, 288, 1424, 288, 1424, 144)
+
+[node name="Player" parent="." instance=ExtResource("3_oiqhk")]
+position = Vector2(24, 144)
+
+[node name="Frog" parent="." instance=ExtResource("4_oiqhk")]
+position = Vector2(1048, 104)

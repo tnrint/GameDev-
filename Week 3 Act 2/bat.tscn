@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://dc1gp4c5lkwic"]
+[gd_scene load_steps=29 format=3 uid="uid://dc1gp4c5lkwic"]
 
 [ext_resource type="Texture2D" uid="uid://cxhp88bu31ltv" path="res://Enemies/bat/Albino/BatAlbino_Sheet.png" id="1_pb2o4"]
+[ext_resource type="Script" uid="uid://bx07qva1cygdu" path="res://bat.gd" id="1_tofr1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tofr1"]
-size = Vector2(12, 12)
+size = Vector2(46, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vobq3"]
 atlas = ExtResource("1_pb2o4")
@@ -115,7 +116,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_0pjmi")
 }],
 "loop": true,
-"name": &"attack",
+"name": &"Attack",
 "speed": 5.0
 }, {
 "frames": [{
@@ -140,7 +141,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_anpsy")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead",
 "speed": 5.0
 }, {
@@ -187,14 +188,35 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tofr1"]
+radius = 290.13962
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vobq3"]
+size = Vector2(10, 17)
+
 [node name="Bat" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_tofr1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_tofr1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(4, 4)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_55sqa")
-animation = &"fly"
+animation = &"dead"
+frame = 6
+frame_progress = 1.0
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_tofr1")
+
+[node name="Bite" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bite"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_vobq3")

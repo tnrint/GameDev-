@@ -1,6 +1,10 @@
-[gd_scene load_steps=37 format=3 uid="uid://c04vnckttsxkw"]
+[gd_scene load_steps=41 format=3 uid="uid://c04vnckttsxkw"]
 
+[ext_resource type="Script" uid="uid://cq5fdg1kqqfg4" path="res://frog.gd" id="1_6ekd3"]
 [ext_resource type="Texture2D" uid="uid://dwlv57l7vym8k" path="res://Enemies/forg/PurpleWhite/ToxicFrogPurpleWhite_Sheet.png" id="1_whe2r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ekd3"]
+size = Vector2(81, 65)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_whe2r"]
 atlas = ExtResource("1_whe2r")
@@ -191,7 +195,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xtm2m")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead",
 "speed": 5.0
 }, {
@@ -268,13 +272,35 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_slgur"]
+radius = 409.099
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_byod8"]
+size = Vector2(63, 50)
+
 [node name="Frog" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_6ekd3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-11.5, 6.5)
+shape = SubResource("RectangleShape2D_6ekd3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_omj1a")
 animation = &"dead"
-frame_progress = 0.7104108
+frame = 8
+frame_progress = 1.0
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_slgur")
+
+[node name="Bite" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bite"]
+position = Vector2(2, -1)
+shape = SubResource("RectangleShape2D_byod8")
