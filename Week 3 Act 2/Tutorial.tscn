@@ -1,11 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://bfh4c4mwbm0jj"]
 
 [ext_resource type="Texture2D" uid="uid://xnavsn7vlavt" path="res://oak_woods_v1.0/oak_woods_tileset.png" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://cebkuuauqqy76" path="res://tutorial.gd" id="1_oiqhk"]
 [ext_resource type="PackedScene" uid="uid://dc1gp4c5lkwic" path="res://bat.tscn" id="2_fr6qw"]
 [ext_resource type="PackedScene" uid="uid://b4nekjir0edk0" path="res://Player.tscn" id="3_oiqhk"]
 [ext_resource type="PackedScene" uid="uid://c04vnckttsxkw" path="res://frog.tscn" id="4_oiqhk"]
-
-[sub_resource type="GDScript" id="GDScript_jl26d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f3sb7"]
 texture = ExtResource("1_f3sb7")
@@ -57,7 +56,9 @@ size = Vector2(168, 140.5)
 size = Vector2(136, 42.25)
 
 [node name="World" type="Node2D"]
-script = SubResource("GDScript_jl26d")
+script = ExtResource("1_oiqhk")
+bat_scene = ExtResource("2_fr6qw")
+frog_scene = ExtResource("4_oiqhk")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -68,9 +69,6 @@ layer_0/tile_data = PackedInt32Array(1179711, 65537, 1, 1245247, 65537, 1, 13107
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(16, 448)
-
-[node name="Bat" parent="." instance=ExtResource("2_fr6qw")]
-position = Vector2(408, 136)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -99,5 +97,8 @@ polygon = PackedVector2Array(1624, 144, 1624, 488, 2072, 488, 2072, 144, 2184, 1
 [node name="Player" parent="." instance=ExtResource("3_oiqhk")]
 position = Vector2(24, 144)
 
-[node name="Frog" parent="." instance=ExtResource("4_oiqhk")]
-position = Vector2(1048, 104)
+[node name="EnemySpawn" type="Marker2D" parent="."]
+position = Vector2(624, 88)
+
+[node name="EnemySpawn1" type="Marker2D" parent="."]
+position = Vector2(1048, 136)

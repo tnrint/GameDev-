@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dwlv57l7vym8k" path="res://Enemies/forg/PurpleWhite/ToxicFrogPurpleWhite_Sheet.png" id="1_whe2r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ekd3"]
-size = Vector2(81, 65)
+size = Vector2(56.5, 40.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_whe2r"]
 atlas = ExtResource("1_whe2r")
@@ -273,7 +273,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_slgur"]
-radius = 409.099
+radius = 158.14551
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byod8"]
 size = Vector2(63, 50)
@@ -283,23 +283,22 @@ collision_layer = 2
 script = ExtResource("1_6ekd3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-11.5, 6.5)
 shape = SubResource("RectangleShape2D_6ekd3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(4, 4)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_omj1a")
-animation = &"dead"
-frame = 8
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_slgur")
 
 [node name="Bite" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bite"]
 position = Vector2(2, -1)
