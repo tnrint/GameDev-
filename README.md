@@ -25,4 +25,6 @@ A simple slide run dino game inspired by google dino game level 1 is up to 1000 
 The same game as the 2nd Week 2nd Activity but added music when starting game, dying music, and winning music.
 
 ## 3rd Week 2nd Activity
-Restarted Activity still in progress. A Platform Game where the first scene introduces the mechanics of the game and when vetured further in the scene player will enter a pit to fall and transitions to endless survival attacked by AI Enemies.
+Restarted Activity completed. This game introduces basic mechanics A key for moving left D key for moving right W key for jump. The AI in this game uses path finding moving close to the player and uses collision detection to detect if player is nearby.
+
+
